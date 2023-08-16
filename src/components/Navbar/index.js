@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import { styled } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -7,7 +7,19 @@ const StyledNavbar = styled("nav")({
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: "39px 66px",
+  padding: "39px 60px 39px 66px",
+  backgroundColor: "#F5F5FF",
+  "& ul": {
+    width: "100%",
+    gap: "47px",
+    "& li": {
+      "& a": {
+        color: "#9597AB",
+        fontSize: "20px",
+        fontWeight: 500,
+      },
+    },
+  },
 });
 
 const navigation = [
@@ -37,7 +49,7 @@ const StyledLink = styled(Link)({
 
 const Navbar = () => {
   return (
-    <StyledNavbar>
+    <StyledNavbar className={"styled-navbar"}>
       <ul style={{ listStyle: "none", display: "inline-flex" }}>
         {navigation.map(({ id, name, path }) => (
           <li key={id}>

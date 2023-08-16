@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { Link, useLocation } from "react-router-dom";
 
 import BrandLogo from "assets/images/brand.png";
@@ -13,6 +12,7 @@ import TeamIcon from "assets/svgs/group-people.svg";
 import PersonIcon from "assets/svgs/user.svg";
 
 import "./sidebar.css";
+import { styled } from "@mui/material";
 
 const navigation = [
   {
@@ -39,6 +39,7 @@ const navigation = [
     name: "Live",
     path: "/live",
     icon: LiveIcon,
+    count: 5,
   },
   {
     name: "Affiliate",
@@ -77,7 +78,13 @@ const Brand = styled("img")({
   marginBottom: "59px",
 });
 
-const StyledNav = styled("nav")({});
+const StyledNav = styled("nav")({
+  width: "100%",
+  "& ul": {
+    maxWidth: "183px",
+    margin: "auto",
+  },
+});
 
 const StyledIcon = styled("img")({});
 
@@ -92,13 +99,61 @@ const StyledLink = styled(Link)({
   lineHeight: "normal",
   textDecoration: "none",
   margin: "13px 0",
+  position: "relative",
+
+  "& .counter": {
+    width: 36,
+    height: 18,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px",
+    borderRadius: "10px",
+    background: "#F0F0FA",
+    fontSize: "14px",
+    fontWeight: 500,
+  },
+});
+
+const StyledSelectedLink = styled(Link)({
+  display: "flex",
+  alignItems: "center",
+  padding: "12px 28px 12px 22px",
+  gap: "0 12px",
+  fontSize: "20px",
+  fontStyle: "normal",
+  fontWeight: 500,
+  lineHeight: "normal",
+  textDecoration: "none",
+  margin: "13px 0",
+  position: "relative",
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    width: "4px",
+    height: "100%",
+    background: "#0071C1",
+    right: "-32px",
+  },
+  "& .counter": {
+    width: 36,
+    height: 18,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "10px",
+    borderRadius: "10px",
+    background: "#F0F0FA",
+    fontSize: "14px",
+    fontWeight: 500,
+    color: "#A7A7CE",
+  },
 });
 
 const Sidebar = () => {
   const { pathname } = useLocation();
 
   const getActiveLink = (path) => {
-    console.log({ pathname, path });
     return pathname === path ? "active-link" : "link";
   };
 
@@ -107,11 +162,19 @@ const Sidebar = () => {
       <Brand src={BrandLogo} alt="brand" />
       <StyledNav>
         <ul style={{ textDecoration: "none", listStyle: "none" }}>
-          {navigation.map(({ icon, name, path }, index) => (
+          {navigation.map(({ icon, name, path, count }, index) => (
             <li key={`${name}-${index}`}>
-              <StyledLink to={path} className={getActiveLink(path)}>
-                {icon && <StyledIcon src={icon} alt={name} />} {name}
-              </StyledLink>
+              {pathname === path ? (
+                <StyledSelectedLink to={path} className={getActiveLink(path)}>
+                  {icon && <StyledIcon src={icon} alt={name} />} {name}
+                  {count && <span className="counter">{count}</span>}
+                </StyledSelectedLink>
+              ) : (
+                <StyledLink to={path} className={getActiveLink(path)}>
+                  {icon && <StyledIcon src={icon} alt={name} />} {name}
+                  {count && <span className="counter">{count}</span>}
+                </StyledLink>
+              )}
             </li>
           ))}
         </ul>
