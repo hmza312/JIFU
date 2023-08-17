@@ -10,13 +10,11 @@ const CoursesCard = ({ src, title }) => {
     height: "275px",
     display: "flex",
     flexDirection: "column",
-    paddingBottom: "13px",
-    gap: "13px",
   });
   const ImageWrapper = styled(Box)({
     background: "#E5FFF0",
     position: "relative",
-    height: "180px",
+    height: "200px",
     textAlign: "center",
   });
   const TextSectionWrapper = styled(Typography)({
