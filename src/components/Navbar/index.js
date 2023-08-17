@@ -1,6 +1,10 @@
-import { styled } from "@mui/material";
+import { Box, MenuItem, Select, styled } from "@mui/material";
+import { notificationBing } from "assets/svgs/notification-bing";
+import { profileCircle } from "assets/svgs/profile-circle";
+import { searchIcon } from "assets/svgs/search-normal";
 import React from "react";
 import { Link } from "react-router-dom";
+import LanguageEllipse from "../../assets/svgs/Ellipse.svg";
 
 const StyledNavbar = styled("nav")({
   display: "flex",
@@ -18,6 +22,30 @@ const StyledNavbar = styled("nav")({
         fontSize: "20px",
         fontWeight: 500,
       },
+    },
+  },
+});
+
+const StyledDropdown = styled(Box)({
+  "& .styled-select": {
+    fontSize: "16px",
+    color: "#000",
+    fontWeight: 300,
+    width: "auto",
+    display: "flex",
+    alignItems: "center",
+    "& .MuiOutlinedInput-input ": {
+      padding: "0 0 0 12px",
+      textOverflow: "initial",
+      display: "flex",
+      gap: "6px",
+      alignItems: "center",
+    },
+    "& fieldset": {
+      border: "none",
+    },
+    "& .MuiSvgIcon-root": {
+      display: "none",
     },
   },
 });
@@ -57,6 +85,29 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+      <Box display={"flex"} gap={"30px"} alignItems={"center"}>
+        {searchIcon}
+        <Box display={"flex"} alignItems={"center"} gap={"7.5px"}>
+          <StyledDropdown className="styled-language-dropdown">
+            <Select className={"styled-select"} defaultValue={1}>
+              <MenuItem value={1}>
+                <img src={LanguageEllipse} alt={"language-icon"} />
+                &nbsp; Spanish
+              </MenuItem>
+              <MenuItem value={2}>
+                <img src={LanguageEllipse} alt={"language-icon"} /> &nbsp;
+                English
+              </MenuItem>
+              <MenuItem value={3}>
+                <img src={LanguageEllipse} alt={"language-icon"} /> &nbsp;
+                French
+              </MenuItem>
+            </Select>
+          </StyledDropdown>
+        </Box>
+        {notificationBing}
+        {profileCircle}
+      </Box>
     </StyledNavbar>
   );
 };

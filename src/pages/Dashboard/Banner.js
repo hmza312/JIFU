@@ -14,7 +14,7 @@ const Banner = () => {
   const StyledDropdown = styled(Box)({
     "& .styled-select": {
       borderRadius: "27px",
-      width: 98,
+      minWidth: 98,
       height: "29px",
       fontSize: "16px",
       backgroundColor: "#F0F0FA",
@@ -22,6 +22,7 @@ const Banner = () => {
       fontWeight: 300,
       "& .MuiOutlinedInput-input ": {
         padding: "0 0 0 12px",
+        textOverflow: "initial",
       },
       "& fieldset": {
         border: "none",

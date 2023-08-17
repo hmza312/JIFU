@@ -2,61 +2,17 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import BrandLogo from "assets/images/brand.png";
-import HomeIcon from "assets/svgs/home.svg";
-import AffiliateIcon from "assets/svgs/home-trend-up.svg";
-import PlaneIcon from "assets/svgs/airplane-square.svg";
-import HealthIcon from "assets/svgs/health.svg";
-import HatIcon from "assets/svgs/degree-hat.svg";
-import LiveIcon from "assets/svgs/graph.svg";
-import TeamIcon from "assets/svgs/group-people.svg";
-import PersonIcon from "assets/svgs/user.svg";
 
 import "./sidebar.css";
 import { styled } from "@mui/material";
-
-const navigation = [
-  {
-    name: "Dashboard",
-    path: "/",
-    icon: HomeIcon,
-  },
-  {
-    name: "Travel",
-    path: "/travel",
-    icon: PlaneIcon,
-  },
-  {
-    name: "Health",
-    path: "/health",
-    icon: HealthIcon,
-  },
-  {
-    name: "University",
-    path: "/university",
-    icon: HatIcon,
-  },
-  {
-    name: "Live",
-    path: "/live",
-    icon: LiveIcon,
-    count: 5,
-  },
-  {
-    name: "Affiliate",
-    path: "/affiliate",
-    icon: AffiliateIcon,
-  },
-  {
-    name: "Team",
-    path: "/team",
-    icon: TeamIcon,
-  },
-  {
-    name: "Profile",
-    path: "/profile",
-    icon: PersonIcon,
-  },
-];
+import { HomeIcon } from "assets/svgs/home";
+import { AirplaneSqaure } from "assets/svgs/airplane-square";
+import { HealthIcon } from "assets/svgs/health";
+import { DegreeHat } from "assets/svgs/degree-hat";
+import { GraphIcon } from "assets/svgs/graph";
+import { HomeTreadIcon } from "assets/svgs/home-trend-up";
+import { GroupPeopleIcon } from "assets/svgs/group-people";
+import { UserIcon } from "assets/svgs/user";
 
 const StyledSidebar = styled("div")({
   backgroundColor: "#000",
@@ -113,6 +69,11 @@ const StyledLink = styled(Link)({
     fontSize: "14px",
     fontWeight: 500,
   },
+  "& svg": {
+    "& path": {
+      fill: "#9597AB",
+    },
+  },
 });
 
 const StyledSelectedLink = styled(Link)({
@@ -148,10 +109,59 @@ const StyledSelectedLink = styled(Link)({
     fontWeight: 500,
     color: "#A7A7CE",
   },
+  "& svg": {
+    "& path": {
+      fill: "white",
+    },
+  },
 });
 
 const Sidebar = () => {
   const { pathname } = useLocation();
+
+  const navigation = [
+    {
+      name: "Dashboard",
+      path: "/",
+      icon: HomeIcon,
+    },
+    {
+      name: "Travel",
+      path: "/travel",
+      icon: AirplaneSqaure,
+    },
+    {
+      name: "Health",
+      path: "/health",
+      icon: HealthIcon,
+    },
+    {
+      name: "University",
+      path: "/university",
+      icon: DegreeHat,
+    },
+    {
+      name: "Live",
+      path: "/live",
+      icon: GraphIcon,
+      count: 5,
+    },
+    {
+      name: "Affiliate",
+      path: "/affiliate",
+      icon: HomeTreadIcon,
+    },
+    {
+      name: "Team",
+      path: "/team",
+      icon: GroupPeopleIcon,
+    },
+    {
+      name: "Profile",
+      path: "/profile",
+      icon: UserIcon,
+    },
+  ];
 
   const getActiveLink = (path) => {
     return pathname === path ? "active-link" : "link";
@@ -166,12 +176,12 @@ const Sidebar = () => {
             <li key={`${name}-${index}`}>
               {pathname === path ? (
                 <StyledSelectedLink to={path} className={getActiveLink(path)}>
-                  {icon && <StyledIcon src={icon} alt={name} />} {name}
+                  {icon && icon} {name}
                   {count && <span className="counter">{count}</span>}
                 </StyledSelectedLink>
               ) : (
                 <StyledLink to={path} className={getActiveLink(path)}>
-                  {icon && <StyledIcon src={icon} alt={name} />} {name}
+                  {icon && icon} {name}
                   {count && <span className="counter">{count}</span>}
                 </StyledLink>
               )}
