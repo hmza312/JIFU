@@ -24,12 +24,7 @@ const AcademiaSection = () => {
           See more
         </Typography>
       </Box>
-      <Box
-        display="flex"
-        gap={"42px"}
-        // justifyContent={"space-between"}
-        flexWrap={"wrap"}
-      >
+      <Box display="flex" gap={"42px"} flexWrap={"wrap"}>
         {[...Array(4)].map(() => (
           <AcademiaCard src={AcademiaImg} title={"JIFU Travel"} />
         ))}

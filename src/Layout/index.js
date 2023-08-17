@@ -1,4 +1,4 @@
-import { Box, styled } from "@mui/material";
+import { Box, Container, styled } from "@mui/material";
 import Navbar from "components/Navbar";
 import Sidebar from "components/Sidebar";
 import React from "react";
@@ -11,12 +11,14 @@ const ContentPane = styled("main")({
 
 const Layout = ({ children }) => {
   return (
-    <Box className={"main-wrapper"} height={"100vh"}>
+    <Box sx={{ backgroundColor: "#F5F5FF" }} className={"main-wrapper"}>
       <Sidebar />
-      <ContentPane>
-        <Navbar />
-        {children}
-      </ContentPane>
+      <Container>
+        <ContentPane>
+          <Navbar />
+          {children}
+        </ContentPane>
+      </Container>
     </Box>
   );
 };

@@ -31,7 +31,6 @@ const StyledDropdown = styled(Box)({
     fontSize: "16px",
     color: "#000",
     fontWeight: 300,
-    width: "auto",
     display: "flex",
     alignItems: "center",
     "& .MuiOutlinedInput-input ": {
@@ -87,7 +86,7 @@ const Navbar = () => {
       </ul>
       <Box display={"flex"} gap={"30px"} alignItems={"center"}>
         {searchIcon}
-        <Box display={"flex"} alignItems={"center"} gap={"7.5px"}>
+        <Box display={"flex"} alignItems={"center"} colGap={"7.5px"}>
           <StyledDropdown className="styled-language-dropdown">
             <Select className={"styled-select"} defaultValue={1}>
               <MenuItem value={1}>

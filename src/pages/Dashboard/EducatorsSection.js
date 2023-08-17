@@ -22,12 +22,7 @@ const EducatorsSection = () => {
           <Box>{forwardArrow}</Box>
         </Box>
       </Box>
-      <Box
-        display="flex"
-        gap={"42px"}
-        flexWrap={"wrap"}
-        // justifyContent={"space-between"}
-      >
+      <Box display="flex" gap={"42px"} flexWrap={"wrap"}>
         {[...Array(5)].map(() => (
           <EducatorsCard
             src={EducatorsImg}

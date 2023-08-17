@@ -1,16 +1,7 @@
-import {
-  Box,
-  styled,
-  Typography,
-  TextField,
-  Pagination,
-  Grid,
-} from "@mui/material";
+import { Box, Grid, TextField, Typography, styled } from "@mui/material";
 import AcademiaSection from "./AcademiaSection";
-import Progress from "./ProgressSection";
 import ProgressSection from "./ProgressSection";
 import SidebarSection from "./SidebarSection";
-// import Banner from "./Banner";
 
 const University = () => {
   const StyledDashboardWrapper = styled(Box)({

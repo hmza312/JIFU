@@ -6,7 +6,6 @@ import EducatorsSection from "./EducatorsSection";
 const Dashboard = () => {
   const StyledDashboardWrapper = styled(Box)({
     padding: "0 66px",
-    backgroundColor: "#F5F5FF",
   });
   return (
     <StyledDashboardWrapper>
